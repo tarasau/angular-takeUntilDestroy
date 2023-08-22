@@ -1,7 +1,7 @@
 # Angular - custom takeUntilDestroy
 Create custom ngOnDestroy life cycle hook
 
-`import { Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 export function TakeUntilDestroy(constructor: any) {
   const originalNgOnDestroy = constructor.prototype.ngOnDestroy;
@@ -20,11 +20,11 @@ export function TakeUntilDestroy(constructor: any) {
       originalNgOnDestroy.apply(this, arguments);
     }
   };
-}`
+}
 
 Usage example:
 
-`@Component({
+@Component({
   selector: 'example-component',
 })
 @TakeUntilDestroy
@@ -42,12 +42,12 @@ export class ExampleComponent implements OnInit, OnDestroy {
   onKeywordChange(keyword: string) {
     this.store.dispatch(new ExampleAction(keyword));
   }
-}`
+}
 
 # In Angular 16 takeUntilDestroy start to be intire function (you might rename custom one)
 
 Usage:
-`<>Copy
+
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 export class Component implements OnInit{
@@ -58,4 +58,4 @@ export class Component implements OnInit{
       .pipe(takeUntilDestroyed())
       .subscribe(response => this.data = response)
   }
-}`
+}
