@@ -3,7 +3,7 @@ Create custom ngOnDestroy life cycle hook
 
 import { Subject } from 'rxjs';
 
-export function TakeUntilDestroy(constructor: any) {
+export function TakeUntilDestroy(constructor: any) {\
   const originalNgOnDestroy = constructor.prototype.ngOnDestroy;
 
   constructor.prototype.componentDestroy = function () {
